@@ -68,7 +68,7 @@ Backups are useless if you don't make sure they work. This shows the procedure t
 - `cd` to a directory where you'll restore your files, e.g. `/tmp/restore`
 
 - Run `duplicacy init backup_name backup_location`, where `backup_name` and `backup_location` correspond to the `BACKUP_NAME` and `BACKUP_LOCATION` environment variables of your setup.
-    - If you used client-side encryption, add the `-encrypt` flag: `duplicacy init -encrypt backup_name backup_location`
+    - **If you used client-side encryption, add the `-encrypt` flag**: `duplicacy init -encrypt backup_name backup_location`
 
   You will get a prompt asking for your storage provider's credentials, and, if applicable, your encryption key:
 

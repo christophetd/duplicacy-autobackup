@@ -34,6 +34,6 @@ export DUPLICACY_ONE_TOKEN=$ONEDRIVE_TOKEN_FILE
 
 if [[ ! -d .duplicacy ]]; then
   do_init
-else
-  do_backup
 fi
+
+do_backup

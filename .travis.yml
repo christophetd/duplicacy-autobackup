@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-  - docker build . duplicacy-autobackup
+  - docker build . -t duplicacy-autobackup

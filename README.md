@@ -123,6 +123,10 @@ Use the following environment variables if you want to customize duplicacy's beh
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
 - `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`
 
+## Disclaimer
+
+This project uses [Duplicacy](https://github.com/gilbertchen/duplicacy), which is free for personal use but requires [purchasing a licence](https://duplicacy.com/buy.html) for non-trial commercial use. See the detailed terms [here](https://github.com/gilbertchen/duplicacy/blob/master/LICENSE.md).
+
 ## Contact
 
 Feel free to [open an issue](https://github.com/christophetd/duplicacy-autobackup/issues/new) for any suggestion or bug. You can also tweet [@christophetd](https://twitter.com/christophetd).

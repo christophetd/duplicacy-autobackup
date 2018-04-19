@@ -1,8 +1,8 @@
-# Duplicacy autobackup
+# Duplicacy Autobackup
 
 [![](https://images.microbadger.com/badges/image/christophetd/duplicacy-autobackup.svg)](https://microbadger.com/images/christophetd/duplicacy-autobackup "Get your own image badge on microbadger.com")
 
-Docker image to easily benefit from automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
+Duplicacy Autobackup is a Docker image to easily perform automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 
 - Multiple storage backends: S3, Backblaze B2, Hubic, Dropbox, SFTP...
 - Client-side encryption
@@ -22,7 +22,7 @@ The following environment variables can be used to configure the backup strategy
     - Backblaze B2: `b2://my-bucket/`
     - ...
 
-Then, the directory you want to backup must be mounted to `/data` on the container.
+Additionally, the directory you want to backup must be mounted to `/data` on the container.
 
 Additionally, you will need to provide credentials for the storage provider your of your choice:
 - AWS S3: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_KEY`
@@ -122,3 +122,7 @@ Use the following environment variables if you want to customize duplicacy's beh
 
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
 - `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`
+
+## Contact
+
+Feel free to [open an issue](https://github.com/christophetd/duplicacy-autobackup/issues/new) for any suggestion or bug. You can also tweet [@christophetd](https://twitter.com/christophetd).

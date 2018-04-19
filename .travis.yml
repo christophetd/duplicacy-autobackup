@@ -1,10 +1,21 @@
 sudo: required
-
+language: python
+python:
+- '2.7'
 services:
-  - docker
-
+- docker
+install:
+- mkdir -p /tmp/bin
+- wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.0/duplicacy_linux_x64_2.1.0 -O /tmp/bin/duplicacy && chmod +x /tmp/bin/duplicacy
+- export PATH=$PATH:/tmp/bin
+- pip install awscli
 script:
-  - docker build . -t duplicacy-autobackup
-
+- docker build . -t duplicacy-autobackup
+- bash test.sh
 notifications:
   email: false
+env:
+  global:
+  # Test AWS creds
+  - secure: DS19450pF2t8ezg+z59Sw1rneNubxDKP6SIf1JyqVPIo1K7us/bkJMQ9zZQeAZ8IxqGObTipSqJbR/UMVEVREI/bNP86arZEk75n3dYpA8WA+1Q967oMoSlYduh+5XfqHzwl6Z3gTeXpfu4+CEQcnZxZcvww63fJ3eFPmwhj018TLvxJy0ySITNrhzj4xMYcEH0dm8ccvak5a/9+y5gyaCLvrJVQruaqVHn48oceX3REh5hwrXWMRutG1Ikvm89e4J1vhywiR8O0pgnqR+vvYGAtB7UVaXPEnoCnxXRDxqOjiT6CjIGlrdOGaA4wAc2zexaYRgo95gTqsw2SoTBwmR8KsVRv3Q71XvBGlObTL/X1cOYMkHzB1i5puca6oOaQFgw2YN1/6M+5CwNCIpNSh939FABYmphCpR4jdU239OoyrzPpKVFUdJ1fvp/fK307r+MuiAe7yrjYVzOcdum7Z3eqcGjbaQOx6Puaz+PGtmSQlnSlWTcPaIrP/JBocKbvCSg4nDlMegwFkgwGsVfMzESZD5Dg3ax9rSiBSDl+5MqoZkqRrwx/lsqTCCsiRNbS8bkPDPpoOdp4WqmAen45cQA6xsBLX6J55DaK9/j+9ypzDxnDKxz1nBWsP8BjSKLubHLEXbHi7Vz5BkJsVxPxh25mPKvlnf+dMo1PyxKdRUE=
+  - secure: B+riO9Qe8WFDc56kr+/rOrhYVlvCFqhhvIPWX/y5gN7qsO0eXuRxLNh022iKVxdxqkQ5MzWq3KU8UPxEEwSz2tRoywmUnaqjDQtg+gGf0EeqDsdiRhQsdWYhUB89qiQvqlgPORflXCImNj1xqZW/lcAijMmBaoSfRTZeAsUeqfBl/OlEESesisf6d0fltKDpl2MRbNsJCyUu/+SE6Q1Z0tP2SyVv5bJ26M1KSqFECNRwMw3AflLsJGHAdnM3ja5kuX+4BfPcUriN0YWHrR2wWoNo2kxT2/x7VOEhAPnXofgrOW8qGSqImFAgSE57BTs3OXUKSWkO9VGiC/FaV5x2p4F7hWflg8Mu7f8hgrtgViN5By9ZamJul1Ji8gLZEqgTfzLuKMHCA3oHNzw9/lx2GcUCcArvoBDbXkp2rUxVi0B991UhtGSKvDikMck9ed26atJMu5qV2oRSZUQeqH2DUw5tGR13EAxd2SmFU4ru7Qmfc4c0lAtUB1glOrfOtoQyH785UFzE3ZkwNRU9lGuTZTma9gdDzYRWfLIw9XuAqEKKBPjVSbB/cnf5z4LkkizfB8/CwoLR7UYa6kLZ58xZRiXP1PKS5I9VAfFMjQzuwSma++A1hXb7BcjHQ8kwNeNHh3pXcSK2OFHNcKVTTy4r5Ws5LRKGCyB0q6Tc0Y1bSM8=

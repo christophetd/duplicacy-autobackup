@@ -68,26 +68,26 @@ Backups are useless if you don't make sure they work. This shows the procedure t
 - Run `duplicacy init backup_name backup_location`, where `backup_name` and `backup_location` correspond to the `BACKUP_NAME` and `BACKUP_LOCATION` environment variables of your setup.
     - If you used client-side encryption, add the `-encrypt` flag: `duplicacy init -encrypt backup_name backup_location`
 
-  You will get a prompt asking for your storage provider's credentials, e.g. with S3 :
+  You will get a prompt asking for your storage provider's credentials, and, if applicable, your encryption key:
 
   ```
   Enter S3 Access Key ID: *****
   Enter S3 Secret Access Key: *************
-  Enter storage password for s3://us-west-1@amazon.com/xtof-db-backups:*******************
-  The storage 's3://us-east-1@amazon.com/xtof-test-bucket/my-backups/' has already been initialized
+  Enter storage password for s3://eu-west-1@amazon.com/xtof-db-backups:*******************
+  The storage 's3://eu-west-1@amazon.com/xtof-db-backups' has already been initialized
   Compression level: 100
   Average chunk size: 4194304
   Maximum chunk size: 16777216
   Minimum chunk size: 1048576
   Chunk seed: fc7e56fb91f8f66b01ba033ec6f7b128bcb3420c66a31468a4f3541407d569bd
-  /tmp/restore will be backed up to s3://us-east-1@amazon.com/xtof-test-bucket/my-backups/ with id db-backups
+  /tmp/restore will be backed up to s3://eu-west-1@amazon.com/xtof-db-backups with id db-backups
   ```
 
 - To list the versions of your backups, run:
 
   ```
   $ duplicacy list
-  Storage set to s3://us-east-1@amazon.com/xtof-test-bucket/my-backups/
+  Storage set to s3://eu-west-1@amazon.com/xtof-db-backups
   Enter storage password:*******************
   Snapshot db-backups revision 1 created at 2018-04-19 09:47 -hash
   Snapshot db-backups revision 2 created at 2018-04-19 09:48 
@@ -106,7 +106,7 @@ Backups are useless if you don't make sure they work. This shows the procedure t
   $ duplicacy restore -r 2 '*.txt'
   ```
 
-- To restore the whole revision 2 of your backup, run:
+- To restore in the current directory the whole revision 2 of your backup, run:
 
   ```
   $ duplicacy restore -r 2

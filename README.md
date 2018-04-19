@@ -38,7 +38,7 @@ Additionally, you will need to provide credentials for the storage provider your
 If you want to execute an out of schedule backup, you can do so by running the script `/app/backup.sh` inside the container :
 
 ``` 
-$ docker exec your-container /app/backup.sh
+$ docker exec duplicacy-autobackup /app/backup.sh
 ```
 
 ## Example
@@ -46,7 +46,7 @@ $ docker exec your-container /app/backup.sh
 Backup `/var/lib/mysql` to the S3 bucket `xtof-db-backups` in the AWS region `eu-west-1` every night at 2:00am, and encrypt them with the passphrase `correct horse battery staple`:
 
 ```bash
-$ docker run \
+$ docker run -d --name duplicacy-autobackup \
     -v /var/lib/mysql:/data \
     -e BACKUP_NAME='prod-db-backups' \
     -e BACKUP_LOCATION='s3://eu-west-1@amazon.com/xtof-db-backups' \

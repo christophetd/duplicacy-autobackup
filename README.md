@@ -1,5 +1,7 @@
 # Duplicacy autobackup
 
+[![](https://images.microbadger.com/badges/image/christophetd/duplicacy-autobackup.svg)](https://microbadger.com/images/christophetd/duplicacy-autobackup "Get your own image badge on microbadger.com")
+
 Docker image to easily benefit from automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 
 - Multiple storage backends: S3, Backblaze B2, Hubic, Dropbox, SFTP...

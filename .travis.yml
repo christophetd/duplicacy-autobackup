@@ -5,3 +5,6 @@ services:
 
 script:
   - docker build . -t duplicacy-autobackup
+
+notifications:
+  email: false

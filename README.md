@@ -1,4 +1,4 @@
-# Autobackup
+# Duplicacy autobackup
 
 Docker image to easily benefit from automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 
@@ -54,12 +54,12 @@ $ docker run \
     -e BACKUP_ENCRYPTION_KEY='correct horse battery staple' \
     -e AWS_ACCESS_KEY_ID='AKIA...' \
     -e AWS_SECRET_KEY='...' \
-    christophetd/autobackup
+    christophetd/duplicacy-autobackup
 ```
 
 ## Viewing and restoring backups
 
-Backups are useless if you don't make sure they work. This shows the procedure to list files, versions, and restore a duplicacy backup made using autobackup.
+Backups are useless if you don't make sure they work. This shows the procedure to list files, versions, and restore a duplicacy backup made using duplicacy-autobackup.
 
 - Install Duplicacy: download the latest Duplicacy binary from its [Github page](https://github.com/gilbertchen/duplicacy/releases), and put it in your path
 

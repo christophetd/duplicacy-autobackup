@@ -1,6 +1,6 @@
 # Duplicacy Autobackup
 
-[![](https://images.microbadger.com/badges/image/christophetd/duplicacy-autobackup.svg)](https://microbadger.com/images/christophetd/duplicacy-autobackup "Get your own image badge on microbadger.com")
+[![Build Status](https://travis-ci.org/christophetd/duplicacy-autobackup.svg?branch=master)](https://travis-ci.org/christophetd/duplicacy-autobackup)  [![](https://images.microbadger.com/badges/image/christophetd/duplicacy-autobackup.svg)](https://microbadger.com/images/christophetd/duplicacy-autobackup "Get your own image badge on microbadger.com")
 
 Duplicacy Autobackup is a Docker image to easily perform automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 

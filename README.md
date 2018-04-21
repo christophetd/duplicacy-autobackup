@@ -24,7 +24,8 @@ The following environment variables can be used to configure the backup strategy
 
 Additionally, the directory you want to backup must be mounted to `/data` on the container.
 
-Additionally, you will need to provide credentials for the storage provider your of your choice:
+You need to provide credentials for the storage provider your of your choice using the following environment variables:
+
 - AWS S3: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_KEY`
 - Backblaze B2: `B2_ID` and `B2_KEY`
 - Dropbox: `DROPBOX_TOKEN`

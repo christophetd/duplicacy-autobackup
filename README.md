@@ -16,7 +16,7 @@ The following environment variables can be used to configure the backup strategy
 
 - `BACKUP_NAME`: The name of your backup (should be unique, e.g. `prod-db-backups`)
 - `BACKUP_ENCRYPTION_KEY`: An optional passphrase to encrypt your backups with before they are stored remotely.
-- `BACKUP_SCHEDULE`: Cron-like string to define the frequency at which backups should be made (e.g. `0 2 * * *` for `Every day at 2am`)
+- `BACKUP_SCHEDULE`: Cron-like string to define the frequency at which backups should be made (e.g. `0 2 * * *` for `Every day at 2am`). Note that this string should be indicated in the UTC timezone.
 - `BACKUP_LOCATION`: [Duplicacy URI](https://github.com/gilbertchen/duplicacy/wiki/Storage-Backends) of where to store the backups.
     - S3: `s3://region@amazon.com/bucket/path/to/storage`
     - Backblaze B2: `b2://my-bucket/`
@@ -117,12 +117,12 @@ Backups are useless if you don't make sure they work. This shows the procedure t
 
 More: see [Duplicacy's documentation](https://github.com/gilbertchen/duplicacy/wiki).
 
-## Advanced options
+## Other options
 
 Use the following environment variables if you want to customize duplicacy's behavior.
 
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
-- `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`
+- `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`. **If you are backing up a hard drive (and not a SSD), it is recommended to use `-threads 1 -stats` instead** (see [here](https://duplicacy.com/issue?id=5670666258874368) for more details).
 
 ## Disclaimer
 

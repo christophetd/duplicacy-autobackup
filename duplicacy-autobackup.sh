@@ -37,8 +37,14 @@ export DUPLICACY_GCD_TOKEN=$GCD_TOKEN
 export DUPLICACY_GCS_TOKEN=$GCS_TOKEN_FILE
 export DUPLICACY_ONE_TOKEN=$ONEDRIVE_TOKEN_FILE
 
-if [[ ! -d .duplicacy ]]; then
-  do_init
+if [[ "$1" == "init" ]]; then
+  if [[ ! -d .duplicacy ]]; then
+    do_init
+  else
+    echo 'This folder has already been initialized with duplicacy. Not initializing again'
+  fi
+elif [[ "$1" == "backup" ]]; then
+  do_backup
+else 
+  echo "Unknown command: $1" >&2
 fi
-
-do_backup

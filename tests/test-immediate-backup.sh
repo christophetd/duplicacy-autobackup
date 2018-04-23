@@ -32,7 +32,8 @@ docker run -d --name duplicacy-autobackup \
     -v $temp_dir/data:/data \
     -e BACKUP_NAME=$BACKUP_NAME \
     -e BACKUP_LOCATION="$BACKUP_LOCATION" \
-    -e BACKUP_SCHEDULE='* * * * *' \
+    -e BACKUP_SCHEDULE='0 2 * * *' \
+    -e BACKUP_IMMEDIATLY='yes' \
     -e BACKUP_ENCRYPTION_KEY="$PASSPHRASE" \
     -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY \

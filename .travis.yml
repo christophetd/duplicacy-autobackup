@@ -11,7 +11,7 @@ install:
 - pip install awscli
 script:
 - docker build . -t duplicacy-autobackup
-- bash test.sh
+- for test in tests/*.sh; do echo "Running $test..."; bash $test; done
 notifications:
   email: false
 env:

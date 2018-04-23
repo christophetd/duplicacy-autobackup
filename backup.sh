@@ -12,6 +12,11 @@ do_init() {
   fi
 
   duplicacy init $DUPLICACY_INIT_OPTIONS $BACKUP_NAME "$BACKUP_LOCATION"
+  if [[ $? != 0 ]]; then
+    echo "duplicacy init command failed. Aborting" >&2
+    rm -rf .duplicacy
+    exit 1
+  fi
 }
 
 do_backup() {

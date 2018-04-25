@@ -1,5 +1,8 @@
 #!/bin/sh
 
+PRE_BACKUP_SCRIPT="/scripts/pre-backup.sh"
+POST_BACKUP_SCRIPT="/scripts/post-backup.sh"
+
 cd /data
 
 do_init() {
@@ -20,7 +23,25 @@ do_init() {
 }
 
 do_backup() {
+  status=0
+  if [[ -f $PRE_BACKUP_SCRIPT ]]; then
+    echo "Running pre-backup script"
+    sh $PRE_BACKUP_SCRIPT
+    status=$?
+  fi
+  if [[ $status != 0 ]]; then
+    echo "Pre-backup script exited with status code $status. Not performing backup." >&2
+    return
+  fi
+
   duplicacy backup $DUPLICACY_BACKUP_OPTIONS
+
+  if [[ -f $POST_BACKUP_SCRIPT ]]; then
+    echo "Running post-backup script"
+    sh $POST_BACKUP_SCRIPT
+    status=$?
+    echo "Post-backup script exited with status $status"
+  fi
 }
 
 export DUPLICACY_PASSWORD=$BACKUP_ENCRYPTION_KEY

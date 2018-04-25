@@ -119,6 +119,8 @@ More: see [Duplicacy's documentation](https://github.com/gilbertchen/duplicacy/w
 
 ## Other options
 
+You can have duplicacy-autobackup run a script before and after the backup process by mounting scripts on `/scripts/pre-backup.sh` and `/scripts/post-backup.sh`. For instance if you're backing up a MySQL database, this script can involve doing a `mysqldump` into `/data/mydb.sql`. If `pre-backup.sh` exits with a non-zero status code, the backup will not be performed until the next scheduled backup.
+
 Use the following environment variables if you want to customize duplicacy's behavior.
 
 - `BACKUP_IMMEDIATLY` (`yes`/`no`): indicates if a backup should be performed immediatly after the container is started. Equivalent to launching the container and then running `docker exec duplicacy-autobackup /app/duplicacy-autobackup.sh backup`. By default, `no`.

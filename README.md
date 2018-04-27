@@ -123,7 +123,7 @@ You can have duplicacy-autobackup run a script before and after the backup proce
 
 Use the following environment variables if you want to customize duplicacy's behavior.
 
-- `BACKUP_IMMEDIATLY` (`yes`/`no`): indicates if a backup should be performed immediatly after the container is started. Equivalent to launching the container and then running `docker exec duplicacy-autobackup /app/duplicacy-autobackup.sh backup`. By default, `no`.
+- `BACKUP_IMMEDIATELY` (`yes`/`no`): indicates if a backup should be performed immediatly after the container is started. Equivalent to launching the container and then running `docker exec duplicacy-autobackup /app/duplicacy-autobackup.sh backup`. By default, `no`.
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
 - `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`. **If you are backing up a hard drive (and not a SSD), it is recommended to use `-threads 1 -stats` instead** (see [here](https://duplicacy.com/issue?id=5670666258874368) for more details).
 

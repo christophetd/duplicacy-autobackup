@@ -24,24 +24,34 @@ do_init() {
 
 do_backup() {
   status=0
-  if [[ -f $PRE_BACKUP_SCRIPT ]]; then
-    echo "Running pre-backup script"
-    sh $PRE_BACKUP_SCRIPT
-    status=$?
-  fi
-  if [[ $status != 0 ]]; then
-    echo "Pre-backup script exited with status code $status. Not performing backup." >&2
-    return
-  fi
+  while : ; do
+    if [[ -f $PRE_BACKUP_SCRIPT ]]; then
+      echo "Running pre-backup script"
+      sh $PRE_BACKUP_SCRIPT
+      status=$?
+      if [[ $status != 0 ]]; then
+        echo "Pre-backup script exited with status code $status. Not performing backup." >&2
+        break
+      fi
+    fi
 
-  duplicacy backup $DUPLICACY_BACKUP_OPTIONS
-
-  if [[ -f $POST_BACKUP_SCRIPT ]]; then
-    echo "Running post-backup script"
-    sh $POST_BACKUP_SCRIPT
+    duplicacy backup $DUPLICACY_BACKUP_OPTIONS
     status=$?
-    echo "Post-backup script exited with status $status"
-  fi
+    if [[ $status != 0 ]]; then
+      echo "Duplicacy backup failed." >&2
+      break
+    fi
+
+    if [[ -f $POST_BACKUP_SCRIPT ]]; then
+      echo "Running post-backup script"
+      sh $POST_BACKUP_SCRIPT
+      status=$?
+      echo "Post-backup script exited with status $status"
+      break
+    fi
+    break
+  done
+  return $status
 }
 
 export DUPLICACY_PASSWORD=$BACKUP_ENCRYPTION_KEY
@@ -66,6 +76,7 @@ if [[ "$1" == "init" ]]; then
   fi
 elif [[ "$1" == "backup" ]]; then
   do_backup
+  exit $?
 else 
   echo "Unknown command: $1" >&2
 fi

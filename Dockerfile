@@ -30,11 +30,11 @@ ENV BACKUP_SCHEDULE='* * * * *' \
 #--
 #-- Other steps
 #--
-RUN apk --no-cache add ca-certificates && update-ca-certificates
-RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.2/duplicacy_linux_$platform_2.1.2 -O /usr/bin/duplicacy && \
-    chmod +x /usr/bin/duplicacy
+RUN apk --no-cache add ca-certificates && update-ca-certificates \
+ && wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.2/duplicacy_linux_$platform_2.1.2 -O /usr/bin/duplicacy \
+ && chmod +x /usr/bin/duplicacy \
+ && mkdir /app
 
-RUN mkdir /app
 WORKDIR /app
 
 ADD *.sh ./

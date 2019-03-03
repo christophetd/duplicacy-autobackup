@@ -1,5 +1,6 @@
 FROM alpine:3.7
 MAINTAINER Christophe Tafani-Dereeper <christophe@tafani-dereeper.me>
+ARG platform=x64
 
 #--
 #-- Environment variables
@@ -30,7 +31,7 @@ ENV BACKUP_SCHEDULE='* * * * *' \
 #-- Other steps
 #--
 RUN apk --no-cache add ca-certificates && update-ca-certificates
-RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.0/duplicacy_linux_x64_2.1.0 -O /usr/bin/duplicacy && \
+RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.2/duplicacy_linux_$platform_2.1.2 -O /usr/bin/duplicacy && \
     chmod +x /usr/bin/duplicacy
 
 RUN mkdir /app

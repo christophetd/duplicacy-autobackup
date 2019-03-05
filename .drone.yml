@@ -13,7 +13,7 @@ steps:
     tags: armhf
     dockerfile: Dockerfile
     build_args:
-      - platform=arm
+      - PLATFORM=arm
     username:
       from_secret: docker_username
     password:

@@ -29,7 +29,9 @@ ENV BACKUP_SCHEDULE='* * * * *' \
     AZURE_KEY='' \
     GCD_TOKEN='' \
     GCS_TOKEN_FILE='' \
-    ONEDRIVE_TOKEN_FILE=''
+    ONEDRIVE_TOKEN_FILE='' \
+    PRUNE_SCHEDULE='0 0 * * *' \
+    DUPLICACY_PRUNE_OPTIONS=''
 
 #--
 #-- Other steps

@@ -127,6 +127,27 @@ Use the following environment variables if you want to customize duplicacy's beh
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
 - `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`. **If you are backing up a hard drive (and not a SSD), it is recommended to use `-threads 1 -stats` instead** (see [here](https://duplicacy.com/issue?id=5670666258874368) for more details).
 
+### Pruning old backups
+
+Duplicacy offers an option to [prune](https://forum.duplicacy.com/t/prune-command-details/1005) old backups. By default, duplicacy-autobackup does _not_ perform any pruning. However, you can set the environment variables `DUPLICACY_PRUNE_OPTIONS` and `PRUNE_SCHEDULE` to perform automatic pruning. As an example, setting:
+
+```
+DUPLICACY_PRUNE_OPTIONS='-keep 0:360 -keep 30:180 -keep 7:30'
+PRUNE_SCHEDULE='0 0 * * *'
+```
+
+Means that:
+- Every day at midnight, the pruning process runs
+- When the pruning process runs...
+   - Any backup older than 1 year is deleted from the remote storage
+   - Only 1 backup per 30 days is kept for backups between 180 days and 360 days old
+   - Only 1 backup per 7 days is kept for backups between 7 days and 180 days old
+   - 1 backup per day is kept for backups between 0 day and 7 days old
+
+
+ See the [prune command details](https://forum.duplicacy.com/t/prune-command-details/1005) for further details.
+
+
 ## Choosing the Duplicacy version
 
 When building the container, you can choose the Duplicacy version that will be used in the container image. The build argument `DUPLICACY_VERSION` is available for that purpose, e.g.:

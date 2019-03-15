@@ -44,6 +44,13 @@ do_backup() {
   fi
 }
 
+do_prune() {
+  if [[ ! -z "$DUPLICACY_PRUNE_OPTIONS" ]]; then
+    echo "Running prunning"
+    duplicacy -log prune $DUPLICACY_PRUNE_OPTIONS
+  fi
+}
+
 export DUPLICACY_PASSWORD=$BACKUP_ENCRYPTION_KEY
 export DUPLICACY_S3_ID=$AWS_ACCESS_KEY_ID
 export DUPLICACY_S3_SECRET=$AWS_SECRET_KEY
@@ -65,7 +72,9 @@ if [[ "$1" == "init" ]]; then
     echo 'This folder has already been initialized with duplicacy. Not initializing again'
   fi
 elif [[ "$1" == "backup" ]]; then
-  do_backup
+  do_backup 
+elif [[ "$1" == "prune" ]]; then
+  do_prune
 else 
   echo "Unknown command: $1" >&2
 fi

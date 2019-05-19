@@ -24,7 +24,8 @@ ENV BACKUP_SCHEDULE='* * * * *' \
     AZURE_KEY='' \
     GCD_TOKEN='' \
     GCS_TOKEN_FILE='' \
-    ONEDRIVE_TOKEN_FILE=''
+    ONEDRIVE_TOKEN_FILE='' \
+    DUPLICACY_VERSION=''
 
 #--
 #-- Other steps

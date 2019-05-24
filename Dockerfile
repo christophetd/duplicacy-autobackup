@@ -2,6 +2,11 @@ FROM alpine:3.7
 MAINTAINER Christophe Tafani-Dereeper <christophe@tafani-dereeper.me>
 
 #--
+#-- Build variables
+#--
+ARG DUPLICACY_VERSION=2.1.0
+
+#--
 #-- Environment variables
 #--
 
@@ -30,7 +35,7 @@ ENV BACKUP_SCHEDULE='* * * * *' \
 #-- Other steps
 #--
 RUN apk --no-cache add ca-certificates && update-ca-certificates
-RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.0/duplicacy_linux_x64_2.1.0 -O /usr/bin/duplicacy && \
+RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v${DUPLICACY_VERSION}/duplicacy_linux_x64_${DUPLICACY_VERSION} -O /usr/bin/duplicacy && \
     chmod +x /usr/bin/duplicacy
 
 RUN mkdir /app

@@ -127,6 +127,14 @@ Use the following environment variables if you want to customize duplicacy's beh
 - `DUPLICACY_INIT_OPTIONS`: options passed to `duplicacy init` the first time a backup is made. By default, `-encrypt` if `BACKUP_ENCRYPTION_KEY` is not empty.
 - `DUPLICACY_BACKUP_OPTIONS`: options passed to `duplicacy backup` when a backup is performed. By default: `-threads 4 -stats`. **If you are backing up a hard drive (and not a SSD), it is recommended to use `-threads 1 -stats` instead** (see [here](https://duplicacy.com/issue?id=5670666258874368) for more details).
 
+## Choosing the Duplicacy version
+
+You can choose the Duplicacy version that will be used by the container during build time. The `ARG` `DUPLICACY_VERSION` is available for that purpose. e.g:
+
+```
+docker build --build-arg DUPLICACY_VERSION=2.1.0 -t christophetd/duplicacy-autobackup .
+```
+
 ## Disclaimer
 
 This project uses [Duplicacy](https://github.com/gilbertchen/duplicacy), which is free for personal use but requires [purchasing a licence](https://duplicacy.com/buy.html) for non-trial commercial use. See the detailed terms [here](https://github.com/gilbertchen/duplicacy/blob/master/LICENSE.md).

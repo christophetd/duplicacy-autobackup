@@ -6,7 +6,7 @@ services:
 - docker
 install:
 - mkdir -p /tmp/bin
-- wget https://github.com/gilbertchen/duplicacy/releases/download/v2.1.0/duplicacy_linux_x64_2.1.0 -O /tmp/bin/duplicacy && chmod +x /tmp/bin/duplicacy
+- wget https://github.com/gilbertchen/duplicacy/releases/download/v2.3.0/duplicacy_linux_x64_2.3.0 -O /tmp/bin/duplicacy && chmod +x /tmp/bin/duplicacy
 - export PATH=$PATH:/tmp/bin
 - pip install awscli
 script:

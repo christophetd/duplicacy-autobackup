@@ -4,7 +4,7 @@ MAINTAINER Christophe Tafani-Dereeper <christophe@tafani-dereeper.me>
 #--
 #-- Build variables
 #--
-ARG DUPLICACY_VERSION=2.1.0
+ARG DUPLICACY_VERSION=2.3.0
 
 #--
 #-- Environment variables

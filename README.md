@@ -129,7 +129,7 @@ Use the following environment variables if you want to customize duplicacy's beh
 
 ## Choosing the Duplicacy version
 
-You can choose the Duplicacy version that will be used by the container during build time. The `ARG` `DUPLICACY_VERSION` is available for that purpose. e.g:
+When building the container, you can choose the Duplicacy version that will be used in the container image. The build argument `DUPLICACY_VERSION` is available for that purpose, e.g.:
 
 ```
 docker build --build-arg DUPLICACY_VERSION=2.1.0 -t christophetd/duplicacy-autobackup .

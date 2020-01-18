@@ -40,14 +40,12 @@ ENV BACKUP_SCHEDULE='* * * * *' \
 #--
 RUN apk --no-cache add ca-certificates && update-ca-certificates
 RUN ARCH="$(uname -m)";\
-    if [ "$ARCH" == "x86" ]; then \
-        DUPLICACY_ARCH="x86"; \
+    if [ "$ARCH" == "x86_64" ]; then \
+        DUPLICACY_ARCH="x64"; \
     elif [ "$ARCH" == "aarch64" ]; then \
         DUPLICACY_ARCH="arm64"; \
     elif [ "$ARCH" == "armv7l" ]; then \
         DUPLICACY_ARCH="arm"; \
-    else \
-        DUPLICACY_ARCH="x64"; \
     fi; \
     wget https://github.com/gilbertchen/duplicacy/releases/download/v${DUPLICACY_VERSION}/duplicacy_linux_${DUPLICACY_ARCH}_${DUPLICACY_VERSION} -O /usr/bin/duplicacy && \
     chmod +x /usr/bin/duplicacy

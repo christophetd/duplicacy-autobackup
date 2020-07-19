@@ -28,19 +28,27 @@ do_backup() {
     echo "Running pre-backup script"
     sh $PRE_BACKUP_SCRIPT
     status=$?
-  fi
-  if [[ $status != 0 ]]; then
-    echo "Pre-backup script exited with status code $status. Not performing backup." >&2
-    return
+    if [[ $status != 0 ]]; then
+      echo "Pre-backup script exited with status code $status. Not performing backup." >&2
+      exit $status
+    fi
   fi
 
   duplicacy backup $DUPLICACY_BACKUP_OPTIONS
+  status=$?
+  if [[ $status != 0 ]]; then
+    echo "Duplicacy backup failed with status code $status." >&2
+    exit $status
+  fi
 
   if [[ -f $POST_BACKUP_SCRIPT ]]; then
     echo "Running post-backup script"
     sh $POST_BACKUP_SCRIPT
     status=$?
-    echo "Post-backup script exited with status $status"
+    if [[ $status != 0 ]]; then
+      echo "Post-backup script failed with status code $status." >&2
+      exit $status
+    fi
   fi
 }
 
@@ -48,6 +56,11 @@ do_prune() {
   if [[ ! -z "$DUPLICACY_PRUNE_OPTIONS" ]]; then
     echo "Running prunning"
     duplicacy -log prune $DUPLICACY_PRUNE_OPTIONS
+    status=$?
+    if [[ $status != 0 ]]; then
+      echo "Prune failed with status code $status." >&2
+      exit $status
+    fi
   fi
 }
 

@@ -36,6 +36,7 @@ You need to provide credentials for the storage provider your of your choice usi
 - Hubic: `HUBIC_TOKEN_FILE`*
 - Google Cloud Storage: `GCS_TOKEN_FILE`*
 - Onedrive: `ONEDRIVE_TOKEN_FILE`*
+- Onedrive Business: `ONEDRIVE_BUSINESS_TOKEN_FILE`*
 - Wasabi: `WASABI_KEY` and `WASABI_SECRET`
 
 *Environment variables marked with an asterix point to files. Those files must be mounted in the container so that they can be accessed from inside it*.

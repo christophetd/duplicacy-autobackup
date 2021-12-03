@@ -1,0 +1,36 @@
+name: Integration tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: eu-central-1
+  IMAGE_NAME: duplicacy-autobackup # local
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build local Docker image
+        run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
+
+      - name: Install Duplicacy
+        run: |
+          sudo wget https://github.com/gilbertchen/duplicacy/releases/download/v2.7.2/duplicacy_linux_x64_2.7.2 -O /usr/bin/duplicacy
+          sudo chmod +x /usr/bin/duplicacy
+
+      - name: Run integration tests
+        run: |
+          bash tests/test-immediate-backup.sh
+          bash tests/test-pre-post-scripts.sh

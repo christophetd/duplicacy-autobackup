@@ -1,10 +1,10 @@
-FROM alpine:3.7
+FROM alpine:3.15.0
 MAINTAINER Christophe Tafani-Dereeper <christophe@tafani-dereeper.me>
 
 #--
 #-- Build variables
 #--
-ARG DUPLICACY_VERSION=2.3.0
+ARG DUPLICACY_VERSION=2.7.2
 
 #--
 #-- Environment variables

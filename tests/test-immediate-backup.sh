@@ -3,10 +3,10 @@
 
 : ${AWS_ACCESS_KEY_ID:?"Missing AWS secret key"}
 : ${AWS_SECRET_ACCESS_KEY:?"Missing AWS secret key"}
+: ${AWS_REGION:?"Missing AWS region"}
 
 TEST_BUCKET=duplicacy-autobackup-tests
-REGION=eu-central-1
-BACKUP_LOCATION="s3://$REGION@amazon.com/$TEST_BUCKET"
+BACKUP_LOCATION="s3://$AWS_REGION@amazon.com/$TEST_BUCKET"
 IMAGE_NAME=duplicacy-autobackup # local image
 PASSPHRASE='correct horse battery staple'
 BACKUP_NAME='prod-db-backups'
@@ -40,7 +40,7 @@ docker run -d --name duplicacy-autobackup \
     $IMAGE_NAME
 
 echo "Waiting for backup to be performed..."
-sleep 10
+sleep 20
 
 if [[ -z $(aws s3 ls $TEST_BUCKET) ]]; then
     echo "Nothing in test bucket. Exiting" >&2

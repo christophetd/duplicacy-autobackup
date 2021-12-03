@@ -58,7 +58,7 @@ $ docker run -d --name duplicacy-autobackup \
     -e BACKUP_ENCRYPTION_KEY='correct horse battery staple' \
     -e AWS_ACCESS_KEY_ID='AKIA...' \
     -e AWS_SECRET_KEY='...' \
-    ghcr.io/christophetd/duplicacy-autobackup:1.3
+    ghcr.io/christophetd/duplicacy-autobackup:v1.3.4
 ```
 
 ## Viewing and restoring backups

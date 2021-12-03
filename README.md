@@ -1,6 +1,7 @@
 # Duplicacy Autobackup
 
 ![build status](https://github.com/christophetd/duplicacy-autobackup/actions/workflows/.github/workflows/test-integration.yml/badge.svg)
+![latest version](https://img.shields.io/github/v/release/christophetd/duplicacy-autobackup)
 
 Duplicacy Autobackup is a Docker image to easily perform automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 
@@ -58,7 +59,7 @@ $ docker run -d --name duplicacy-autobackup \
     -e BACKUP_ENCRYPTION_KEY='correct horse battery staple' \
     -e AWS_ACCESS_KEY_ID='AKIA...' \
     -e AWS_SECRET_KEY='...' \
-    ghcr.io/christophetd/duplicacy-autobackup:v1.3.4
+    ghcr.io/christophetd/duplicacy-autobackup:v1.4.0
 ```
 
 ## Viewing and restoring backups

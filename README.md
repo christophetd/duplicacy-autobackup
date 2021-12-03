@@ -113,7 +113,7 @@ Backups are useless if you don't make sure they work. This shows the procedure t
 - To restore in the current directory the whole revision 2 of your backup, run:
 
   ```
-  $ duplicacy restore -r 2
+  $ duplicacy restore -ignore-owner -r 2
   ```
 
 More: see [Duplicacy's documentation](https://github.com/gilbertchen/duplicacy/wiki).

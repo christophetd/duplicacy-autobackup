@@ -3,7 +3,7 @@
 PRE_BACKUP_SCRIPT="/scripts/pre-backup.sh"
 POST_BACKUP_SCRIPT="/scripts/post-backup.sh"
 
-cd /data
+cd /wd
 
 do_init() {
   : ${BACKUP_NAME:?'Missing BACKUP_NAME'}

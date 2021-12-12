@@ -3,10 +3,11 @@
 
 : ${AWS_ACCESS_KEY_ID:?"Missing AWS secret key"}
 : ${AWS_SECRET_ACCESS_KEY:?"Missing AWS secret key"}
+: ${AWS_REGION:?"Missing AWS region"}
 
 TEST_BUCKET=duplicacy-autobackup-tests
-REGION=eu-central-1
-BACKUP_LOCATION="s3://$REGION@amazon.com/$TEST_BUCKET"
+AWS_REGION=eu-central-1
+BACKUP_LOCATION="s3://$AWS_REGION@amazon.com/$TEST_BUCKET"
 IMAGE_NAME=duplicacy-autobackup # local image
 PASSPHRASE='correct horse battery staple'
 BACKUP_NAME='prod-db-backups'

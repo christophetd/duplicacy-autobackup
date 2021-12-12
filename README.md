@@ -1,6 +1,7 @@
 # Duplicacy Autobackup
 
-[![Build Status](https://travis-ci.org/christophetd/duplicacy-autobackup.svg?branch=master)](https://travis-ci.org/christophetd/duplicacy-autobackup)  [![](https://images.microbadger.com/badges/image/christophetd/duplicacy-autobackup.svg)](https://microbadger.com/images/christophetd/duplicacy-autobackup "Get your own image badge on microbadger.com")
+![build status](https://github.com/christophetd/duplicacy-autobackup/actions/workflows/.github/workflows/test-integration.yml/badge.svg)
+![latest version](https://img.shields.io/github/v/release/christophetd/duplicacy-autobackup)
 
 Duplicacy Autobackup is a Docker image to easily perform automated backups. It uses [duplicacy](https://github.com/gilbertchen/duplicacy) under the hood, and therefore supports:
 
@@ -35,6 +36,7 @@ You need to provide credentials for the storage provider your of your choice usi
 - Hubic: `HUBIC_TOKEN_FILE`*
 - Google Cloud Storage: `GCS_TOKEN_FILE`*
 - Onedrive: `ONEDRIVE_TOKEN_FILE`*
+- Onedrive Business: `ONEDRIVE_BUSINESS_TOKEN_FILE`*
 - Wasabi: `WASABI_KEY` and `WASABI_SECRET`
 
 *Environment variables marked with an asterix point to files. Those files must be mounted in the container so that they can be accessed from inside it*.
@@ -58,7 +60,7 @@ $ docker run -d --name duplicacy-autobackup \
     -e BACKUP_ENCRYPTION_KEY='correct horse battery staple' \
     -e AWS_ACCESS_KEY_ID='AKIA...' \
     -e AWS_SECRET_KEY='...' \
-    christophetd/duplicacy-autobackup
+    ghcr.io/christophetd/duplicacy-autobackup:v1.4.0
 ```
 
 ## Viewing and restoring backups
@@ -113,7 +115,7 @@ Backups are useless if you don't make sure they work. This shows the procedure t
 - To restore in the current directory the whole revision 2 of your backup, run:
 
   ```
-  $ duplicacy restore -r 2
+  $ duplicacy restore -ignore-owner -r 2
   ```
 
 More: see [Duplicacy's documentation](https://github.com/gilbertchen/duplicacy/wiki).

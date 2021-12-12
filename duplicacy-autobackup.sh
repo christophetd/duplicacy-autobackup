@@ -34,7 +34,9 @@ do_backup() {
     return
   fi
 
+  /app/make-symlinks.sh # Create symlinks in /wd/ to items in /data/
   duplicacy backup $DUPLICACY_BACKUP_OPTIONS
+  /app/dispose-symlinks.sh
 
   if [[ -f $POST_BACKUP_SCRIPT ]]; then
     echo "Running post-backup script"

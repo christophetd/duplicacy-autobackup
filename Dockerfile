@@ -27,6 +27,7 @@ ENV BACKUP_SCHEDULE='* * * * *' \
     HUBIC_TOKEN_FILE='' \
     SSH_PASSWORD='' \
     SSH_KEY_FILE='' \
+    SSH_PASSPHRASE='' \
     DROPBOX_TOKEN='' \
     AZURE_KEY='' \
     GCD_TOKEN='' \

@@ -32,7 +32,7 @@ You need to provide credentials for the storage provider your of your choice usi
 - Dropbox: `DROPBOX_TOKEN`
 - Azure: `AZURE_KEY`
 - Google Cloud Datastore: `GCD_TOKEN`
-- SSH/SFTP: `SSH_PASSWORD` or `SSH_KEY_FILE`*
+- SSH/SFTP: `SSH_PASSWORD` or `SSH_KEY_FILE`* (optional with `SSH_PASSPHRASE`)
 - Hubic: `HUBIC_TOKEN_FILE`*
 - Google Cloud Storage: `GCS_TOKEN_FILE`*
 - Onedrive: `ONEDRIVE_TOKEN_FILE`*

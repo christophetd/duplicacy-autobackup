@@ -56,8 +56,5 @@ WORKDIR /app
 ADD *.sh ./
 RUN chmod +x *.sh
 
-RUN mkdir /wd
-WORKDIR /wd
-
 VOLUME ["/data"]
 ENTRYPOINT ["/app/entrypoint.sh"]
